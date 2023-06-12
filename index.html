@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUANESKATOR</title>
+    <link rel="shortcut icon" href="./assets/unnamed_3-fotor-2023061212415.png" type="image/svg+xml">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Vibur&display=swap');
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            margin: 20px;
+            font-family: 'Jost', sans-serif;
+        }
+
+        h1{
+            margin: 12px 0 ;
+        }
+
+        .titulo{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .subtitulo{
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing:2px;
+            color: #fff;
+            text-shadow:
+            0 0 7px #fff,
+            0 0 10px #fff,
+            0 0 21px #fff,
+            0 0 42px #fff,
+            0 0 82px #fff,
+            0 0 92px #fff,
+            0 0 102px #fff,
+            0 0 151px #fff;
+
+            margin-top: -40px;
+        }
+
+        .subtitulo h2{
+            font-size: 40px;    
+        }
+
+        @keyframes pulsate {
+            100% {
+                /* Larger blur radius */
+                text-shadow:
+                0 0 2px #fff,
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 40px, #fff,
+                0 0 45px #fff,
+                0 0 50px #fff,
+                0 0 75px #fff;
+            }
+            0% {
+                /* A slightly smaller blur radius */
+                text-shadow:
+                0 0 4px #fff,
+                0 0 10px #fff,
+                0 0 18px #fff,
+                0 0 38px #fff,
+                0 0 73px #fff,
+                0 0 80px #fff,
+                0 0 94px #fff,
+                0 0 140px #fff;
+            }
+        }
+        .titulo h1{
+           font-family: 'Bebas Neue', sans-serif;
+           font-size: 76px;
+           
+        }
+
+        .categorias ul{
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .categorias li a {
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+        }
+
+        .categorias li  {
+            list-style: none;
+            text-decoration: none;
+            
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            width: 50vw;
+            margin: 50px auto;
+        }
+
+        .slide {
+            overflow: hidden;
+            height: 60vh;
+            position: relative;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: 50%;
+            flex: 0.5;
+            cursor: pointer;
+            transition: 0.5s linear flex;
+            -webkit-transition: 0.5s linear flex;
+            -moz-transition: 0.5s linear flex;
+            -ms-transition: 0.5s linear flex;
+            -o-transition: 0.5s linear flex;
+        }
+
+        .descripcion  {
+            width: 100%;
+            z-index: 5;
+            background: rgba(4,4,4,0.85);
+            display: flex;
+            align-items: start;
+            opacity:0;
+            border-radius: 10px;
+            padding: 20px;
+            animation-name: heading;
+            animation-timing-function: cubic-bezier(0.68, -0.55, 0265, 1.55);
+            animation-duration: 1.5s;
+            animation-iteration-count: 1;
+        }
+
+        .slide.active .descripcion{
+            animation-name: heading;
+            animation-timing-function: cubic-bezier(0.68, -0.55, 0265, 1.55);
+            animation-duration: 1.5s;
+            animation-iteration-count: 1;
+            opacity: 1;
+        }
+
+        @keyframes heading {
+            from {
+                bottom: 150px;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 20px;
+                opacity: 1;
+            }
+        }
+
+        .slide h2 {
+            position: relative;
+            bottom: 20px;
+            opacity: 0;
+            color: #fff;
+        }
+
+        .slide h2 span {
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 300;
+            opacity: 1;
+            margin-top: 10px;
+            display: block;
+            text-align: justify;
+        }
+
+        .slide.active {
+            flex: 5;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .slide.active h2 {
+            opacity: 1;
+            animation-name: heading;
+            animation-timing-function: cubic-bezier(0.68, -0.55, 0265, 1.55);
+            animation-duration: 1.5s;
+            animation-iteration-count: 1;
+        }
+        
+        .row{
+            display: flex;
+        }
+
+        .cards{
+            gap:2em;
+            flex-wrap: wrap;
+            padding: 2em 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card{
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            background-image: url(https://media.discordapp.net/attachments/1117631712109797377/1117672162900316260/color-correction-editing-software-3uvhevrhn5gp2fh0.jpg?width=1177&height=662);
+            max-width: 150px;
+            min-height: 500px;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+            background-position: center;
+            background-repeat:no-repeat ;
+            background-size: cover;
+            border-radius: 25px;
+            transition: max-width 0.5s ease-in-out;
+        }
+
+        .card:nth-of-type(2){
+            background-image: url(https://cdn.discordapp.com/attachments/1117631712109797377/1117672776501829734/email-1920-x-1080-picture-l0rq3jh5k9b4rqta.jpg);
+        }
+        .card:nth-of-type(3){
+            background-image: url(https://media.discordapp.net/attachments/1117631712109797377/1117681796000264192/minecraft-server-3840-x-2160-wallpaper-asgo7tkw7rjhqlc2_1.jpg?width=895&height=503);
+        }
+        .card:nth-of-type(4){
+            background-image: url(https://cdn.discordapp.com/attachments/1117631712109797377/1117683211749830676/image.png);
+        }
+        .card:nth-of-type(5){
+            background-image: url(https://media.discordapp.net/attachments/1117631712109797377/1117678248923500584/marketing-ecommerce-black-cgnavhe2zouxqlnu.jpg?width=895&height=503);
+        }
+
+        .card:hover{
+            max-width: 500px;
+        }
+
+        .card-body{
+            background: linear-gradient(180deg,rgba(45,45,45,0)0%,#000000 100%);
+            padding: 4em;
+        }
+
+        .tittle{
+            background: linear-gradient(180deg,rgba(45,45,45,0)0%,#000000 100%);
+            position: absolute;
+            inset: 0;
+        }
+
+
+        .card:hover .tittle{
+            all: unset;
+        }
+
+        .tittle h2{
+            font-size: clamp(28px,5vw,48px);
+            color: white;
+            text-transform: uppercase;
+            white-space: nowrap;
+            margin: 0;
+            transform: rotate(-90deg) translateX(-350px);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .card:hover h2{
+            padding-bottom: 0.5em;
+            transform: unset;
+        }
+
+        .card-body p{
+            text-transform: uppercase;
+            position: absolute;
+            font-size: 18px;
+            color: white;
+            margin: 0;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease-in-out;
+            text-align: justify;
+        }
+
+        .card:hover p{
+            position: relative;
+            opacity: 1;
+            max-height: 100%;
+        }
+
+        .cardme{
+            width: 500px;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 8px solid #fff;
+            position: relative;
+        }
+
+        .cardme img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius:15px ;
+        }
+
+        .cardme-body{
+            width: 100%;
+            height: 100%;
+            top:0;
+            right: -100%;
+            position: absolute;
+            background: #1f3d4738;
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            /*padding: 30px;*/
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: 2s;
+        }
+
+        .cardme:hover .cardme-body{
+            right: 0;
+        }
+        .card-title{
+            display: flex;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            text-transform: uppercase;
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        .card-subtitle{
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            text-transform: capitalize;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .card-info{
+            font-size: 16px;
+            line-height: 25px;
+            margin: 0px 16px;
+            font-weight: 400;
+            text-align: justify;
+        }
+
+        .cards-container{
+            display: flex;
+            gap:10px;
+            justify-content: center;  
+            flex-wrap: wrap;  
+        }
+
+        .info{
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: -40px;
+            margin-bottom: 60px;
+        }
+
+        .info p{
+            padding: 0px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="titulo">
+                <h1>JUAN ESTEBAN PEÑUELA GUERRERO</h1>
+                <div class="subtitulo">
+                    <h2>VOICE ARTIST AND DIGITAL MARKETER</h2>
+                </div>
+                <div class="info">
+                    <p>
+                    juaneskator@gmail.com
+                    </p>
+                    <p>
+                        +57 350 294 2700
+                    </p>
+                </div>
+            </div>
+            <div >
+
+            </div>
+            <nav class="categorias">
+                <ul>
+                    <li>
+                        <a href="">VIDEOS</a>
+                    </li>
+                    <li>
+                        <a href="">SKILLS</a>
+                    </li>
+                    <li>
+                        <a href="">ABOUT ME</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="main">
+            <div class="slide active">
+                <div class="descripcion">
+                    <h2>VOICE DEMO / REEL
+                        <span>In this awesome video, I'm thrilled to show off my incredible voice skills! Get ready to be impressed as I demonstrate my talent in voiceovers, voice acting, and creating catchy commercials that really hit home with audiences in my country. I've put in so much hard work over the past two years, and I couldn't be prouder of the voice demos I've created. This latest compilation is the result of all that dedication and growth. From powerful narrations to fun character performances, you'll see how much I love using my voice to bring stories to life. So sit back, relax, and enjoy this amazing showcase of my voice talents – the culmination of two years of pure passion and effort!
+                        </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="descripcion">
+                    <h2>MINECRAFT ALPHA SONGS<span>In this Minecraft video about its songs, I showcase my exceptional abilities in ranking and poetic storytelling. Prepare to be moved as I curate a collection of enchanting melodies, expressing lots of deep emotions. Through a visually stunning blend of words and images, I bring these songs to life, evoking a range of feelings that will leave you captivated. With each note and lyric, I transport you to a world where creativity and imagination reign supreme. This video is a testament to my passion for crafting heartfelt content that resonates with viewers in the unique realm of Minecraft.
+                    </span></h2>
+                </div>
+                
+            </div>
+            <div class="slide">
+                <div class="descripcion">
+                    <h2>REDFALL CRITIQUE<span>In this rant video, I fearlessly get into the world of Redfall, a vampire game that faced significant challenges at its launch, receiving substantial critique. With my clear critical thinking skills, I appreciate the game's strengths and weaknesses, unafraid to share my honest opinions. I have a unique ability to dissect complex subjects and present them in a way that anyone can understand! Brace yourself as I dive into the disaster of Redfall, shedding light on both its commendable aspects and areas that fell short.
+                    </span></h2>
+                </div>
+                
+            </div>
+            <div class="slide">
+                <div class="descripcion">
+                    <h2>PLAYSTATION SHOWCASE
+                        <span>In this video I talk about the Playstation showcase, I take on a unique format I created where I rank and dissect the top three and the bottom three video games from the presentation. Prepare to be entertained as I seamlessly blend ranking, explanation, and pure entertainment into a masterfully edited 10-minute video. Time flies as I dive into each game, delivering insightful analysis while keeping you engaged throughout. With impeccable editing with a mixture of VoiceOver and Music, I ensure a seamless viewing experience that keeps you hooked from start to finish. Get ready to join me on this thrilling ride as I showcase my exceptional abilities to rank, explain, and entertain in a way that leaves you wanting more.
+                        </span></h2>
+                </div>
+                
+            </div>
+            <div class="slide">
+                <div class="descripcion">
+                    <h2>THE SUPER MARIO BROS MOVIE
+                        <span>In this entertaining video review, I dive into the world of the Super Mario Movie, striking the perfect balance between acknowledging its target audience of kids while offering thoughtful criticism on areas that could have been improved. I provide insightful commentary that goes beyond with my VoiceOverl. At the same time, I fearlessly critique elements that could have been enhanced to elevate the overall experience. From start to finish, the video showcases my passion for analyzing and dissecting films, delivering a comprehensive and engaging assessment. Join me on this exciting journey as I entertain, inform, and share my expertise, making this video review a must-watch for fans of the beloved Mario Bros.
+                        </span></h2>
+                </div>
+                
+            </div>
+        </div>
+        <div class="cards row">
+            <div class="card row">
+                <div class="card-body">
+                    <div class="tittle">
+                        <h2>EDITING SKILLS?</h2>
+                    </div>
+                    <p>When it comes to editing photos and videos, I've got a solid two years of experience under my belt with Adobe Premiere and Canva. Let me tell you, I've got a passion for turning raw footage and images into stunning masterpieces. I'm bursting with creative ideas that bring a unique touch to every project I work on (And I already got some for Real Estate, hehe).
+                        The best part? I work with lightning speed, ensuring that deadlines are met without compromising the quality of the final product. 
+                        Come on, I even do that as a hobby, so count me in!
+                        </p>
+                </div>
+            </div>
+            <div class="card row">
+                <div class="card-body">
+                    <div class="tittle">
+                        <h2>COMMUNICATION SKILLS?</h2>
+                    </div>
+                    <p>When it comes to being responsive and taking things seriously, I’m your guy. With messages and emails, you can count on me to get back to you in less than a minute (Or it’s free! Hehe). I understand the importance of timely communication and how it keeps things running smoothly. Even more after working on customer service and collections campaigns where I took calls and responded emails nonstop for 13 hours! Can you imagine?
+                        Whether it's scheduling meetings or sticking to my work schedule,
+                        ‘’Estoy en la jugada’’.
+                        
+                    </p>
+                </div>
+            </div>
+            <div class="card row">
+                <div class="card-body">
+                    <div class="tittle">
+                        <h2>ANALYTICAL SKILLS?</h2>
+                    </div>
+                    <p>If you need me to analyze data, market trends, and consumer behavior, I’m the one! I’m good with Excel, Google Analytics, Tableau or just straight up get that data from the Social Media you use, whatever makes you comfortable, that’s what I’ll use to make you also understand how you’re performing and work together as a team.</p>
+                </div>
+            </div>
+            <div class="card row">
+                <div class="card-body">
+                    <div class="tittle">
+                        <h2>MARKET RESEARCH?</h2>
+                    </div>
+                    <p>I love keeping up with what is happening, and something crucial in this is mixing up with the medium needed, in this case, Real Estate! That allows me to gather crucial data and analyze competition, target audience, and industry trends effectively. (Also I bring that new generation flavor to the mix, hehe.)</p>
+                </div>
+            </div>
+            <div class="card row">
+                <div class="card-body">
+                    <div class="tittle">
+                        <h2>DECISION-MAKING?</h2>
+                    </div>
+                    <p>Based on the previous two we need to make decisions! With your help (and consensus) we will make decisions after working hard on agreeing what could be the best for your page but also something that you really LOVE.</p>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+    <div class="cards-container">
+        <div class="cardme">
+            <img src="./assets/BYU-medallion-logo.jpg" alt="">
+            <div class="cardme-body">
+                <h3 class="card-title">BYU AND ENSIGN COLLEGE</h3>
+                <p class="card-info">-Completed Pathway Program at BYU and currently studying Digital Marketing in Ensign -College, gaining life skills and digital marketing knowledge.
+                    -Proficient in various digital marketing strategies: social media, content creation, SEO, and email marketing.
+                    -Analytical mindset: adept at analyzing market trends, consumer behavior, and competitor strategies.
+                    -Developed integrated marketing plans aligned with business goals and audience needs.
+                    -Data-driven: optimized campaigns, tracked KPIs, and achieved measurable results.
+                    -Strong communication skills: effectively convey marketing strategies and ideas.
+                    -Collaborative team player: worked with cross-functional teams to execute initiatives.
+                    -Stay updated with industry trends and emerging technologies in digital marketing.
+                    -Innovative and creative approach to engage audiences and drive business growth
+                    </p>
+            </div>
+        </div>
+        <div class="cardme">
+            <img src="./assets/yputube.png" alt="">
+            <div class="cardme-body">
+                <h3 class="card-title">CONTENT CREATOR</h3>
+                <p class="card-info">-Two years of experience as a content creator on YouTube, TikTok, and Instagram.
+                    -Proficient in editing both images and videos, creating captivating scenes that engage viewers.
+                    -Developed a strong understanding of audience preferences and tailored content to meet their needs.
+                    -Positioned myself as a competent market analyst through creative content creation.
+                    -Generated engaging and high-quality content, increasing subscriber base and gaining a loyal following.
+                    -Analyzed data and performance metrics to optimize content strategies and enhance reach and engagement.
+                    </p>
+            </div>
+        </div>
+       
+        <div class="cardme">
+            <img src="./assets/kmsolution.jpg" alt="">
+            <div class="cardme-body">
+                <h3 class="card-title">KM² SOLUTIONS</h3>
+                <p class="card-info">-Worked at KM² SOLUTIONS, a call center company, gaining valuable experience in customer service.
+                    -Specialized in money collections for Chrysler Capital and the Bank of Santander.
+                    -Developed excellent customer service skills, providing assistance and support to clients.
+                    -Consistently achieved monthly targets and collected payments efficiently.
+                    -Recognized as a responsive and dependable employee, promptly addressing customer inquiries and concerns.
+                    -Demonstrated exceptional performance, earning monthly bonuses as a result of meeting or exceeding collection goals.
+                    </p>
+            </div>
+        </div>
+        <div class="cardme">
+            <img src="./assets/premios.avoz-min.jpg" alt="">
+            <div class="cardme-body">
+                <h3 class="card-title">AVOZ ACADEMY</h3>
+                <p class="card-info">-Completed a two-year program at AVOZ Academy, specializing in voice artistry.
+                    -Developed vocal skills, mastering control, modulation, and projection, enhancing acting abilities, portraying diverse characters and emotions authentically.
+                    -Cultivated a captivating presence, engaging audiences during performances, identifying and conveyed various emotions effectively, adding depth to voice acting.
+                    -Mastered the art of storytelling, captivating listeners with expressive vocals, while acquiring microphone techniques for professional-grade recordings.
+                    -Collaborated with industry professionals, receiving valuable feedback.
+                    -Demonstrated passion and skill, bringing scripts to life with versatility and client requirements.
+                    </p>
+            </div>
+        </div>
+        <div class="cardme">
+            <img src="./assets/setup.jpg" alt="">
+            <div class="cardme-body">
+                <h3 class="card-title">EQUIPMENT</h3>
+                <p class="card-info">Computer:
+                    Acer Aspire A151-51
+                    Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz 1.80 GHz
+                    12.0 GB Installed RAM
+                    Monitor:
+                    Primary Monitor: Acer Aspire A151-51 built-in display
+                    Secondary Monitor: SAMSUNG f27t350fhl 27’’
+                    Headphones:
+                    HYPERX EAR CLOUD
+                    Licenses:
+                    Office 365 subscription with access to the entire Office suite
+                    Adobe Suite license
+                    Microphone:
+                    AUDIO-TECHNICA AT2020 USB+
+                    Keyboard:
+                    RED DRAGON DRACONIC K530
+                    Mouse:
+                    LOGITECH M720 TRIATHLON
+                    </p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+                const bg = [
+            'https://media.discordapp.net/attachments/1117631712109797377/1117644686748815420/Picsart_23-05-09_01-15-32-972.jpg?width=945&height=531',
+            'https://media.discordapp.net/attachments/1117631712109797377/1117644688464302131/Picsart_23-04-12_00-32-02-717.jpg?width=945&height=531',
+            'https://media.discordapp.net/attachments/1117631712109797377/1117644687105347634/Picsart_23-05-05_01-28-17-566.jpg?width=945&height=531',
+            'https://media.discordapp.net/attachments/1117631712109797377/1117644688812425298/-1_orig.jpeg?width=945&height=531',
+            'https://media.discordapp.net/attachments/1117631712109797377/1117644687990329405/Picsart_23-04-10_15-24-38-111.jpg?width=945&height=582'
+        ]
+
+        const slides = document.querySelectorAll(".slide");
+
+        slides.forEach((slide, idx) => {
+            slide.style.backgroundImage = `url("${bg[idx]}")`;
+
+            slide.addEventListener("mouseover", (e) => {
+                slides.forEach((slide) => {
+                    slide.classList.remove("active");
+                });
+                e.currentTarget.classList.add("active");
+            })
+        })
+
+        
+
+        //getting all required elements
+        const gallery  = document.querySelectorAll(".image"),
+        previewBox = document.querySelector(".preview-box"),
+        previewImg = previewBox.querySelector("img"),
+        closeIcon = previewBox.querySelector(".icon"),
+        currentImg = previewBox.querySelector(".current-img"),
+        totalImg = previewBox.querySelector(".total-img"),
+        shadow = document.querySelector(".shadow");
+
+        window.onload = ()=>{
+            for (let i = 0; i < gallery.length; i++) {
+                totalImg.textContent = gallery.length; //passing total img length to totalImg variable
+                let newIndex = i; //passing i value to newIndex variable
+                let clickedImgIndex; //creating new variable
+                
+                gallery[i].onclick = () =>{
+                    clickedImgIndex = i; //passing cliked image index to created variable (clickedImgIndex)
+                    function preview(){
+                        currentImg.textContent = newIndex + 1; //passing current img index to currentImg varible with adding +1
+                        let imageURL = gallery[newIndex].querySelector("img").src; //getting user clicked img url
+                        previewImg.src = imageURL; //passing user clicked img url in previewImg src
+                    }
+                    preview(); //calling above function
+            
+                    const prevBtn = document.querySelector(".prev");
+                    const nextBtn = document.querySelector(".next");
+                    if(newIndex == 0){ //if index value is equal to 0 then hide prevBtn
+                        prevBtn.style.display = "none"; 
+                    }
+                    if(newIndex >= gallery.length - 1){ //if index value is greater and equal to gallery length by -1 then hide nextBtn
+                        nextBtn.style.display = "none"; 
+                    }
+                    prevBtn.onclick = ()=>{ 
+                        newIndex--; //decrement index
+                        if(newIndex == 0){
+                            preview(); 
+                            prevBtn.style.display = "none"; 
+                        }else{
+                            preview();
+                            nextBtn.style.display = "block";
+                        } 
+                    }
+                    nextBtn.onclick = ()=>{ 
+                        newIndex++; //increment index
+                        if(newIndex >= gallery.length - 1){
+                            preview(); 
+                            nextBtn.style.display = "none";
+                        }else{
+                            preview(); 
+                            prevBtn.style.display = "block";
+                        }
+                    }
+                    document.querySelector("body").style.overflow = "hidden";
+                    previewBox.classList.add("show"); 
+                    shadow.style.display = "block"; 
+                    closeIcon.onclick = ()=>{
+                        newIndex = clickedImgIndex; //assigning user first clicked img index to newIndex
+                        prevBtn.style.display = "block"; 
+                        nextBtn.style.display = "block";
+                        previewBox.classList.remove("show");
+                        shadow.style.display = "none";
+                        document.querySelector("body").style.overflow = "scroll";
+                    }
+                }
+                
+            } 
+        }
+    </script>
+</body>
+</html>
